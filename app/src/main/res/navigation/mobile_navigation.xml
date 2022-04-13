@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_calculator">
+
+    <fragment
+        android:id="@+id/nav_calculator"
+        android:name="com.mirea.lavrenov.mireaproject.ui.calculator.CalculatorFragment"
+        android:label="@string/menu_calculator"
+        tools:layout="@layout/fragment_calculator" />
+
+    <fragment
+        android:id="@+id/nav_browser"
+        android:name="com.mirea.lavrenov.mireaproject.ui.browser.BrowserFragment"
+        android:label="@string/menu_browser"
+        tools:layout="@layout/fragment_browser" />
+
+    <fragment
+        android:id="@+id/nav_player"
+        android:name="com.mirea.lavrenov.mireaproject.ui.player.PlayerFragment"
+        android:label="@string/menu_player"
+        tools:layout="@layout/fragment_player" />
+
+    <fragment
+        android:id="@+id/nav_camera"
+        android:name="com.mirea.lavrenov.mireaproject.ui.camera.CameraFragment"
+        android:label="@string/menu_camera"
+        tools:layout="@layout/fragment_camera" />
+
+    <fragment
+        android:id="@+id/nav_microphone"
+        android:name="com.mirea.lavrenov.mireaproject.ui.microphone.MicrophoneFragment"
+        android:label="@string/menu_microphone"
+        tools:layout="@layout/fragment_microphone" />
+
+    <fragment
+        android:id="@+id/nav_sensors"
+        android:name="com.mirea.lavrenov.mireaproject.ui.sensors.SensorsFragment"
+        android:label="@string/menu_sensors"
+        tools:layout="@layout/fragment_sensors" />
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="com.mirea.lavrenov.mireaproject.ui.history.HistoryFragment"
+        android:label="@string/menu_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_HistoryFragmet_to_MakeHistoryFragment"
+            app:destination="@id/nav_make_history_fragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/nav_make_history_fragment"
+        android:name="com.mirea.lavrenov.mireaproject.ui.history.MakeHistoryFragment"
+        android:label="@string/make_history_fragment_label"
+        tools:layout="@layout/fragment_make_history">
+
+        <action
+            android:id="@+id/action_MakeHistoryFragment_to_HistoryFragment"
+            app:destination="@id/nav_history" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_ip"
+        android:name="com.mirea.lavrenov.mireaproject.ui.ip.IpFragment"
+        android:label="@string/menu_ip"
+        tools:layout="@layout/fragment_ip" />
+    <fragment
+        android:id="@+id/nav_room"
+        android:name="com.mirea.lavrenov.mireaproject.ui.room.ItemRoomFragment"
+        android:label="@string/menu_room"
+        tools:layout="@layout/fragment_item_room_list" />
+</navigation>

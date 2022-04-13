@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.history.MakeHistoryFragment"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/editText_make_history_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textShortMessage"
+        android:text="sample_filename"/>
+
+    <Button
+        android:id="@+id/make_history_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="add hsitory" />
+
+    <EditText
+        android:id="@+id/editText_make_history_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:ems="10"
+        android:inputType="textImeMultiLine"
+        android:text="text"
+        android:textAlignment="viewStart" />
+
+</LinearLayout>

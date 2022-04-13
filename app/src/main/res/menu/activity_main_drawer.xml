@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_calculator"
+            android:icon="@drawable/ic_baseline_calculator"
+            android:title="@string/menu_calculator" />
+        <item
+            android:id="@+id/nav_browser"
+            android:icon="@drawable/ic_baseline_open_in_browser"
+            android:title="@string/menu_browser" />
+        <item
+            android:id="@+id/nav_player"
+            android:icon="@drawable/ic_baseline_play_circle_outline"
+            android:title="@string/menu_player" />
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_baseline_camera_alt"
+            android:title="@string/menu_camera" />
+        <item
+            android:id="@+id/nav_microphone"
+            android:icon="@drawable/ic_baseline_record_voice_over"
+            android:title="@string/menu_microphone" />
+        <item
+            android:id="@+id/nav_sensors"
+            android:icon="@drawable/ic_baseline_flaky"
+            android:title="@string/menu_sensors" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_baseline_history_edu"
+            android:title="@string/menu_history" />
+        <item
+            android:id="@+id/nav_ip"
+            android:icon="@drawable/ic_baseline_add_to_queue"
+            android:title="@string/menu_ip" />
+        <item
+            android:id="@+id/nav_room"
+            android:icon="@drawable/ic_baseline_add_to_queue"
+            android:title="@string/menu_room" />
+    </group>
+</menu>
