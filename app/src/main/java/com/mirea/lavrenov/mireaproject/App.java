@@ -1,24 +1,26 @@
-package com.mirea.lavrenov.mireaproject.ui.room;
+package com.mirea.lavrenov.mireaproject;
 
 import android.app.Application;
 
 import androidx.room.Room;
 
+import com.mirea.lavrenov.mireaproject.ui.room.AppDatabase;
+
 public class App extends Application {
     public static App instance;
-    private AppDataBase database;
+    private AppDatabase database;
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
-        database = Room.databaseBuilder(this, AppDataBase.class, "database")
+        database = Room.databaseBuilder(this, AppDatabase.class, "database")
                 .allowMainThreadQueries()
                 .build();
     }
     public static App getInstance() {
         return instance;
     }
-    public AppDataBase getDatabase() {
+    public AppDatabase getDatabase() {
         return database;
     }
 }

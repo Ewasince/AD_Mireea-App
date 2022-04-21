@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mirea.lavrenov.mireaproject.App;
 import com.mirea.lavrenov.mireaproject.R;
 import com.mirea.lavrenov.mireaproject.ui.room.placeholder.PlaceholderItem;
 import com.mirea.lavrenov.mireaproject.ui.room.placeholder.PlaceholderContent;
@@ -27,18 +28,22 @@ import java.util.List;
 public class ItemRoomFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    EnterCaseDao enterCaseDao;
+    EntryCaseDao entryCaseDao;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_item_room_list, container, false);
 
+        AppDatabase db = App.getInstance().getDatabase();
+        entryCaseDao = db.employeeDao();
+        List<EntryCase> listItems = entryCaseDao.getAll();
+
         addCurrentLaunch();
-//        firsInitialize();
+        listItems = entryCaseDao.getAll();
 
         // Set the adapter
-        boolean test = view instanceof RecyclerView;
+//        boolean test = view instanceof RecyclerView; //true
 
         Context context = view.getContext();
         RecyclerView recyclerView = (RecyclerView) view;
@@ -47,7 +52,7 @@ public class ItemRoomFragment extends Fragment {
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
         }
-        PlaceholderContent.ITEMS = convert(enterCaseDao.getAll());
+        PlaceholderContent.ITEMS = convert(listItems);
         recyclerView.setAdapter(new MyItemRoomRecyclerViewAdapter(PlaceholderContent.ITEMS));
 
 
@@ -57,23 +62,22 @@ public class ItemRoomFragment extends Fragment {
         return view;
     }
 
+
     private void addCurrentLaunch() {
-        App app = new App();
-        AppDataBase db = app.getDatabase();
-        enterCaseDao = db.employeeDao();
-        EnterCase enterCase = new EnterCase();
-        enterCase.id = enterCaseDao.getLength();
+        EntryCase entryCase = new EntryCase();
+//        entryCase.id = entryCaseDao.getLength();
+        entryCase.id = 0;
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        enterCase.date = formatter.format(calendar.getTime());
+        entryCase.date = formatter.format(calendar.getTime());
 
-        enterCaseDao.insert(enterCase);
+        entryCaseDao.insert(entryCase);
     }
 
-    public ArrayList<PlaceholderItem> convert(List<EnterCase> arrayListCases) {
+    public ArrayList<PlaceholderItem> convert(List<EntryCase> arrayListCases) {
         ArrayList<PlaceholderItem> arrayListPlaceholder = new ArrayList<>();
-        for(EnterCase item: arrayListCases){
+        for(EntryCase item: arrayListCases){
             arrayListPlaceholder.add(new PlaceholderItem(String.valueOf(item.id), item.date, "test"));
         }
         return arrayListPlaceholder;

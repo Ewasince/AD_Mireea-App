@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mirea.lavrenov.mireaproject.databinding.FragmentItemRoomBinding;
-import com.mirea.lavrenov.mireaproject.databinding.FragmentItemRoomBinding;
 import com.mirea.lavrenov.mireaproject.ui.room.placeholder.PlaceholderItem;
 
 import java.util.List;
