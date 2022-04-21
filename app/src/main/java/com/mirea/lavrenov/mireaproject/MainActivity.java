@@ -53,11 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-//    private FragmentIpBinding bindingIp;
+    //    private FragmentIpBinding bindingIp;
     private FragmentHistoryBinding bindingHistory;
     private Display display;
     private SharedPreferences preferences;
     private TextView textViewIp;
+    private boolean permissionGeo = false;
+    private final int REQUEST_CODE_GEO = 102;
+    private boolean isPermissionGeo = false;
     public MyFileManager fileManager;
     public static StartActivity startActivity;
     public static CalculatorFragment calcFragment;
@@ -113,8 +116,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-//        StartActivity.sourceContext = this;
-//        String test = "";
+        int geoPermissionStatusFine = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        int geoPermissionStatusCoarse = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        if (geoPermissionStatusFine == PackageManager.PERMISSION_GRANTED
+                && geoPermissionStatusCoarse == PackageManager.PERMISSION_GRANTED) {
+            permissionGeo = true;
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    REQUEST_CODE_GEO);
+        }
     }
 
     @Override
@@ -158,10 +168,17 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 // производится проверка полученного результата от пользователя на запрос разрешения Camera
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CODE_PERMISSION_CAMERA) {
-            // permission granted
-            fileManager.isWork = grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+        switch (requestCode) {
+            case REQUEST_CODE_PERMISSION_CAMERA:
+                // permission granted
+                fileManager.isWork = grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                break;
+            case REQUEST_CODE_GEO:
+                isPermissionGeo = grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                        && grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                break;
         }
     }
 

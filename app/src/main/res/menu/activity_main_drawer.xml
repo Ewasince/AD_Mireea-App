@@ -38,7 +38,11 @@
             android:title="@string/menu_ip" />
         <item
             android:id="@+id/nav_room"
-            android:icon="@drawable/ic_baseline_add_to_queue"
+            android:icon="@drawable/ic_baseline_date_range"
             android:title="@string/menu_room" />
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_baseline_map"
+            android:title="@string/menu_map" />
     </group>
 </menu>

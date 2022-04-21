@@ -51,5 +51,6 @@ Firebase.</string>
     <string name="emailpassword_title_text">Email and Password</string>
     <string name="error_sign_in_failed">Sign in failed, see logs for details.</string>
     <string name="menu_ip">Your ip</string>
-    <string name="menu_room">database</string>
+    <string name="menu_room">Database</string>
+    <string name="menu_map">Map</string>
 </resources>
